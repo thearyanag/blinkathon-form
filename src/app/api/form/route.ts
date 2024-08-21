@@ -13,12 +13,15 @@ import {
   ActionGetResponse,
 } from "@solana/actions";
 
+import { createClient } from "@/app/utils/supabase/server";
+import { cookies } from "next/headers";
+
 export async function GET(req: NextRequest) {
   let response: ActionGetResponse = {
     type: "action",
     icon: "https://www.blinkathon.fun/banner.jpeg",
     title: "Register for Blinkaton",
-    description: "Blinkaton from 26th Aug to 31st Aug 2024",
+    description: "Online Blinks hackathon from 26th Aug to 31st Aug",
     label: "Submit!",
     links: {
       actions: [
@@ -86,9 +89,29 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+    const connection = new Connection(
+      clusterApiUrl("mainnet-beta"),
+      "confirmed"
+    );
 
     const sender = new PublicKey(body.account);
+
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+
+    console.log("Inserting into DB");
+
+    let res = await supabase.from("blinkathon").insert([
+      {
+        name,
+        has_team: hasTeam,
+        has_build_blinks: hasBuildBlinks,
+      },
+    ]);
+
+    console.log(res);
+
+    console.log("Inserted into DB");
 
     const tx = new Transaction().add(
       SystemProgram.transfer({

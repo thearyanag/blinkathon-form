@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="relative w-screen h-screen">
-      <Link href="https://x.com/thesendcoin" target="_blank">
+      <Link href="https://x.com/thesendcoin/status/1826308810337816642" target="_blank">
         <Image
           src="/banner.jpeg"
           alt="background"
