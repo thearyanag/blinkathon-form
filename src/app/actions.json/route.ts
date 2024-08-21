@@ -4,13 +4,13 @@ export const GET = async () => {
   const payload: ActionsJson = {
     rules: [
       {
-        pathPattern: "/*",
-        apiPath: "/api/form/*",
+        pathPattern: "/",
+        apiPath: "/api/form/",
       },
       // fallback route
       {
-        pathPattern: "/api/form/*",
-        apiPath: "/api/form/*",
+        pathPattern: "/api/form/",
+        apiPath: "/api/form/",
       }
     ],
   };

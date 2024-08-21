@@ -16,14 +16,14 @@ import {
 export async function GET(req: NextRequest) {
   let response: ActionGetResponse = {
     type: "action",
-    icon: "https://pbs.twimg.com/media/GTEwFhfWsAA5Y0W?format=jpg&name=large",
-    title: "Blinkaton",
-    description: "",
-    label: "Register",
+    icon: "https://www.blinkathon.fun/banner.jpeg",
+    title: "Register for Blinkaton",
+    description: "Blinkaton from 26th Aug to 31st Aug 2024",
+    label: "Submit!",
     links: {
       actions: [
         {
-          label: "LFGGG!", // button text
+          label: "Submit!", // button text
           href: "/api/form?name={name}&hasTeam={hasTeam}&hasBuildBlinks={hasBuildBlinks}", // form action
           parameters: [
             {
@@ -103,23 +103,23 @@ export async function POST(req: NextRequest) {
 
     const payload = await createPostResponse({
       fields: {
-        links: {
-          next: {
-            type: "inline",
-            action: {
-              type: "completed",
-              error: {
-                message: "Scan the QR code to join the Blinkaton Telegram group",
-              },
-              icon: "https://i.imgur.com/LxmZ65g.jpeg",
-              description: "You have successfully registered for the Blinkaton",
-              label: "Registration Successful",
-              title: "Blinkaton",
-            },
-          },
-        },
+        // links: {
+        //   next: {
+        //     type: "inline",
+        //     action: {
+        //       type: "completed",
+        //       error: {
+        //         message: "Scan the QR code to join the Blinkaton Telegram group",
+        //       },
+        //       icon: "https://i.imgur.com/LxmZ65g.jpeg",
+        //       description: "You have successfully registered for the Blinkaton",
+        //       label: "Registration Successful",
+        //       title: "Blinkaton",
+        //     },
+        //   },
+        // },
         transaction: tx,
-        message: "Join here https://t.me/+396IEkq7n8s4MWM9",
+        message: "Join here https://t.me/blinkathon",
       },
     });
 
